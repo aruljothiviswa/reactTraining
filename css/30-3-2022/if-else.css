@@ -1,0 +1,26 @@
+.ifElseCond{
+    margin-left :35%;
+    margin-top:70px;
+    padding:2%;
+    width:25%;
+    background: lightgray;
+}
+
+.blink_text{
+    color:blueviolet;
+    animation-name: blinker;
+    animation-iteration-count: infinite;
+    animation-duration: 4s;
+}
+      
+@keyframes blinker {
+     70% {
+         color:green;
+     }     
+     50%{
+         color:yellow;
+     } 
+     25%{
+         color:brown;
+     }
+}

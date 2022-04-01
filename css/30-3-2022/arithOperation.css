@@ -1,0 +1,32 @@
+.arithOprn{
+    margin-left :30%;
+    margin-top:70px;
+    padding:2%;
+    width:32%;
+    color:rgb(121, 9, 31);
+    background: azure;
+}
+
+.arithCalculation{
+    color:black; 
+    margin :2%;
+    padding:2%;
+    align-content: center;
+}
+
+.arithForm{
+    background-color: rgb(240, 222, 200);
+}
+
+.labelText{
+    width:400px;
+}
+
+th,td {
+    width: 200px;
+    height: 35px;
+}
+
+.arithButton{
+    margin-left:10%;
+}

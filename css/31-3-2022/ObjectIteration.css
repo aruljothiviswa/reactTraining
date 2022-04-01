@@ -1,0 +1,27 @@
+th,td {
+    border: 1px solid darkgoldenrod;
+    padding-left: 15px;
+    width: 150px;
+    height: 35px;
+    background: #efe8e3;
+}
+
+table {
+    margin:10%;
+    padding: 15px;
+    border: 1px solid darkgoldenrod;
+    background: #ccdef2; 
+}
+
+.heading{
+    color:rgb(2, 63, 2);
+    text-align: center;
+}
+
+.productTitle{
+    color:brown
+}
+
+.productName{
+    color:darkgoldenrod
+}

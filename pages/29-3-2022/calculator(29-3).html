@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+   
+<head>
+    <title>Calculator</title>
+    <link href="../../css/29-3-2022/calc1.css" rel="stylesheet">
+   </head>
+
+<body>
+    <div class="calcClass">
+        <table>
+            <tr>
+                <th class="calc2" colspan="4"> Calculator
+                </th>
+            </tr>
+            <tr>
+                <td id="result" class="calc1" colspan="3"></td>
+                <td class="calc point" onclick="calcClear()">Clr</td>
+            </tr>
+            <tr>
+                <td class="calc point" onclick="calculate(1)">1</td>
+                <td class="calc point" onclick="calculate(2)">2</td>
+                <td class="calc point" onclick="calculate(3)">3</td>
+                <td class="calc point" onclick="calcul('add')">+</td>
+            </tr>
+            <tr>
+                <td class="calc point" onclick="calculate(4)">4</td>
+                <td class="calc point" onclick="calculate(5)">5</td>
+                <td class="calc point" onclick="calculate(6)">6</td>
+                <td class="calc point" onclick="calcul('sub')">-</td>
+            </tr>
+            <tr>
+                <td class="calc point" onclick="calculate(7)">7</td>
+                <td class="calc point" onclick="calculate(8)">8</td>
+                <td class="calc point" onclick="calculate(9)">9</td>
+                <td class="calc point" onclick="calcul('mul')">*</td>
+            </tr>
+            <tr>
+                <td class="calc point" onclick="calculate(0)">0</td>
+                <td class="calc point" onclick="calculate('.')">.</td>
+                <td class="calc point" onclick="calcul('ans')">=</td>
+                <td class="calc point" onclick="calcul('div')">/</td>
+            </tr>
+        </table>
+    </div>
+    <script src="../../js/29-3-2022/calc.js"></script>
+</body>
+</html>

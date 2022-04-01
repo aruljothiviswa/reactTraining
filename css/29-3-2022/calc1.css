@@ -1,0 +1,45 @@
+.calcClass{
+    margin-left:200px;
+    margin-top: 50px;
+      }
+
+table{
+    padding:15px;
+    width: 300px;
+    border-radius: 10%;    
+    border: 3px solid darkgoldenrod;
+    background: lightcyan;
+  }
+
+   th, td {
+    border: 1px solid;
+    width: 40px;
+    height: 30px;
+     }
+
+  .calc{
+    border-radius: 30%;    
+    border:2px solid blue;
+    text-align:center;
+  }
+  .calc1{
+    background: white;
+    border-radius: 20%;    
+    border:5px solid darkblue;
+    text-align:right;
+    padding-right: 10px;
+  }
+
+  .calc2{
+    border-radius: 10%;    
+    border:1px solid green;
+    text-align:center;
+    color:purple;
+    text-shadow: 1px 1px yellow;
+    background: lightgoldenrodyellow;
+  }
+
+  .point{
+    background: lightyellow;
+    cursor: pointer;
+  }

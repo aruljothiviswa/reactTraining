@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Calculator</title>
+    <link href="../../css/29-3-2022/calc.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="calcClass">
+        <table>
+            <tr>
+                <th class="calc2" colspan="4"> Calculator
+                </th>
+            </tr>
+            <tr>
+                <td colspan="3"><input id="result" class="calc1" type="text"></td>
+                <td><button class="calc point" onclick="calcClear()">Clr</button></td>
+            </tr>
+            <tr>
+                <td><button class="calc point" onclick="calculateResult('1')">1</button></td>
+                <td><button class="calc point" onclick="calculateResult('2')">2</button></td>
+                <td><button class="calc point" onclick="calculateResult('3')">3</button></td>
+                <td><button class="calc point" onclick="calculateResult('+')">+</button></td>
+            </tr>
+            <tr>
+                <td><button class="calc point" onclick="calculateResult('4')">4</button></td>
+                <td><button class="calc point" onclick="calculateResult('5')">5</button></td>
+                <td><button class="calc point" onclick="calculateResult('6')">6</button></td>
+                <td><button class="calc point" onclick="calculateResult('-')">-</button></td>
+            </tr>
+            <tr>
+                <td><button class="calc point" onclick="calculateResult('7')">7</button></td>
+                <td><button class="calc point" onclick="calculateResult('8')">8</button></td>
+                <td><button class="calc point" onclick="calculateResult('9')">9</button></td>
+                <td><button class="calc point" onclick="calculateResult('*')">*</button></td>
+            </tr>
+            <tr>
+                <td><button class="calc point" onclick="calculateResult('.')">.</button></td>
+                <td><button class="calc point" onclick="calculateResult('0')">0</button></td>
+                <td><button class="calc point" onclick="calculateResult1()">=</button></td>
+                <td><button class="calc point" onclick="calculateResult('/')">/</button></td>
+            </tr>
+        </table>
+    </div>
+    <script src="../../js/29-3-2022/newCalculator.js"></script>
+</body>
+
+</html>
