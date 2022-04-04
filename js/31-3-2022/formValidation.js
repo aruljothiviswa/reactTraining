@@ -1,4 +1,7 @@
 var resultObj = {};
+var finalResult = [];
+var indexValue;
+document.getElementById("edit").value = "Submit";
 function formValidation() {
     var name = document.registrationForm.name;
     var email = document.registrationForm.email;
@@ -10,11 +13,13 @@ function formValidation() {
     var genderArray = '';
     var courseArr = document.querySelectorAll("input[name = 'course']:checked")
     var courseArray = '';
+
     if (genderArr.length > 0) {
         for (let i = 0; i < genderArr.length; i++) {
             genderArray += genderArr[i].value + ', '
         }
-
+    }
+    if (courseArr.length > 0) {
         for (let i = 0; i < courseArr.length; i++) {
             courseArray += courseArr[i].value + ', '
         }
@@ -94,57 +99,69 @@ function formValidation() {
         address: address.value,
         gender: genderArray,
     }
-    showResult(resultObj);
+    // showResult(resultObj);
+    debugger;
+    var table = document.getElementById("resultTable");
+    if (document.getElementById("edit").value != "Submit") {
+        finalResult.splice(indexValue, 1, resultObj)
+        var tempIndex = Number(indexValue) + 2
+        document.getElementById("resultTable").deleteRow(tempIndex);
+        var rowUpdate = table.insertRow(tempIndex);
+        rowUpdate.insertCell(0).innerHTML = resultObj.name;
+        rowUpdate.insertCell(1).innerHTML = resultObj.email;
+        rowUpdate.insertCell(2).innerHTML = resultObj.contactNo;
+        rowUpdate.insertCell(3).innerHTML = resultObj.course;
+        rowUpdate.insertCell(4).innerHTML = '<u class="edit" onclick="editForm(this)">Edit</u> &nbsp; <u class="delete" onclick="deleteForm(this)">Delete</u>'
+    } else {
+        finalResult.push(resultObj)
+        var row = table.insertRow(table.rows.length);
+        row.insertCell(0).innerHTML = resultObj.name;
+        row.insertCell(1).innerHTML = resultObj.email;
+        row.insertCell(2).innerHTML = resultObj.contactNo;
+        row.insertCell(3).innerHTML = resultObj.course;
+        row.insertCell(4).innerHTML = '<u class="edit" onclick="editForm(this)">Edit</u> &nbsp; <u class="delete" onclick="deleteForm(this)">Delete</u>'
+    }
     document.getElementById("registrationForm").reset()
+    document.getElementById("edit").value = "Submit";
     return true;
 }
 
-function showResult(value) {
-    document.getElementById("userRes").innerText = '';
-    document.getElementById("emailRes").innerText = '';
-    document.getElementById("contactRes").innerText = '';
-    document.getElementById("courseRes").innerText = '';
-    if (Object.keys(resultObj).length != 0) {
-        document.getElementById("userRes").innerText = value.name;
-        document.getElementById("emailRes").innerText = value.email;
-        document.getElementById("contactRes").innerText = value.contactNo;
-        document.getElementById("courseRes").innerText = value.course;
+function deleteForm(obj) {
+    var confirmDelete = confirm("Are you sure to delete the record ? ")
+    if (confirmDelete) {
+        var index = obj.parentNode.parentNode.rowIndex;
+        document.getElementById("resultTable").deleteRow(index);
+        finalResult.splice(index - 2, 1);
+        document.getElementById("registrationForm").reset()
+        document.getElementById("edit").value = "Submit";
     }
 }
 
-
-function editForm() {
-    if (Object.keys(resultObj).length === 0) {
-        alert("No Record to update")
-    } else {
-        document.getElementById('name').value = resultObj.name;
-        document.getElementById('email').value = resultObj.email;
-        document.getElementById('contactNo').value = resultObj.contactNo;
-        document.getElementById('age').value = resultObj.age;
-        document.getElementById('address').value = resultObj.address;
-        var genderTemp = resultObj.gender.split(", ")
-        var courseTemp = resultObj.course.split(", ")
-        for (let i = 0; i < genderTemp.length; i++) {
-            if (genderTemp[i] !== '') {
-                document.getElementById(genderTemp[i].toLowerCase()).checked = true;
-            }
-        }
-        for (let i = 0; i < courseTemp.length; i++) {
-            if (courseTemp[i] !== '') {
-                document.getElementById(courseTemp[i].toLowerCase()).checked = true;
-            }
+function editForm(obj) {
+    document.getElementById("edit").value = "Update";
+    var indx = obj.parentNode.parentNode.rowIndex;
+    console.log("obj", indx)
+    var editRow = finalResult[indx - 2]
+    indexValue = indx - 2;
+    document.getElementById("name").value = editRow.name;
+    document.getElementById("email").value = editRow.email;
+    document.getElementById("contactNo").value = editRow.contactNo;
+    document.getElementById("age").value = editRow.age;
+    document.getElementById("address").value = editRow.address;
+    var genderTemp = editRow.gender.split(", ")
+    var courseTemp = editRow.course.split(", ")
+    for (let i = 0; i < genderTemp.length; i++) {
+        if (genderTemp[i] !== '') {
+            document.getElementById(genderTemp[i].toLowerCase()).checked = true;
         }
     }
-}
-
-function deleteForm() {
-    if (Object.keys(resultObj).length == 0) {
-        alert("No Record to delete")
-    } else {
-        var confirmDelete = confirm("Are you sure to delete the record ? ")
-        if (confirmDelete) {
-            resultObj = {}
-            showResult(resultObj);
+    for (let i = 0; i < courseTemp.length; i++) {
+        if (courseTemp[i] !== '') {
+            document.getElementById(courseTemp[i].toLowerCase()).checked = true;
         }
     }
+
+
 }
+
+
