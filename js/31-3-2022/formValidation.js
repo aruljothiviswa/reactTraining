@@ -1,28 +1,50 @@
 var resultObj = {};
-var finalResult = [];
+var finalResult = JSON.parse(localStorage.getItem('storageValues'));
+if (finalResult == null) finalResult = [];
+if (finalResult != null && finalResult.length > 0) loadValues();
 var indexValue;
 document.getElementById("edit").value = "Submit";
-function formValidation() {
-    var name = document.registrationForm.name;
-    var email = document.registrationForm.email;
-    var contactNo = document.registrationForm.contactNo;
-    var age = document.registrationForm.age;
-    var address = document.registrationForm.address;
 
-    var genderArr = document.querySelectorAll("input[name = 'gender']:checked")
-    var genderArray = '';
-    var courseArr = document.querySelectorAll("input[name = 'course']:checked")
-    var courseArray = '';
+function loadValues() {
+    let row;
+    let table = document.getElementById("resultTable");
+    finalResult.forEach(ele => {
+        row = table.insertRow(table.rows.length);
+        row.insertCell(0).innerHTML = ele.name;
+        row.insertCell(1).innerHTML = ele.email;
+        row.insertCell(2).innerHTML = ele.contactNo;
+        row.insertCell(3).innerHTML = ele.course;
+        row.insertCell(4).innerHTML = '<u class="edit" onclick="editForm(this)">Edit</u> &nbsp; <u class="delete" onclick="deleteForm(this)">Delete</u>'
+    })
+}
+
+formValidation = () => {
+    const name = document.registrationForm.name;
+    const email = document.registrationForm.email;
+    const contactNo = document.registrationForm.contactNo;
+    const age = document.registrationForm.age;
+    const address = document.registrationForm.address;
+
+    const genderArr = document.querySelectorAll("input[name = 'gender']:checked")
+    let genderArray = '';
+    const courseArr = document.querySelectorAll("input[name = 'course']:checked")
+    let courseArray = '';
 
     if (genderArr.length > 0) {
-        for (let i = 0; i < genderArr.length; i++) {
-            genderArray += genderArr[i].value + ', '
-        }
+        genderArr.forEach(ele => {
+            genderArray += ele.value + ', '
+        })
+        // for (let i = 0; i < genderArr.length; i++) {
+        //     genderArray += genderArr[i].value + ', '
+        // }
     }
     if (courseArr.length > 0) {
-        for (let i = 0; i < courseArr.length; i++) {
-            courseArray += courseArr[i].value + ', '
-        }
+        courseArr.forEach(ele => {
+            courseArray += ele.value + ', '
+        })
+        // for (let i = 0; i < courseArr.length; i++) {
+        //     courseArray += courseArr[i].value + ', '
+        // }
     }
 
     if (name.value.trim() == '' || name.value.trim() == null) {
@@ -104,6 +126,7 @@ function formValidation() {
     var table = document.getElementById("resultTable");
     if (document.getElementById("edit").value != "Submit") {
         finalResult.splice(indexValue, 1, resultObj)
+        localStorage.setItem("storageValues", JSON.stringify(finalResult));
         var tempIndex = Number(indexValue) + 2
         document.getElementById("resultTable").deleteRow(tempIndex);
         var rowUpdate = table.insertRow(tempIndex);
@@ -114,6 +137,7 @@ function formValidation() {
         rowUpdate.insertCell(4).innerHTML = '<u class="edit" onclick="editForm(this)">Edit</u> &nbsp; <u class="delete" onclick="deleteForm(this)">Delete</u>'
     } else {
         finalResult.push(resultObj)
+        localStorage.setItem("storageValues", JSON.stringify(finalResult));
         var row = table.insertRow(table.rows.length);
         row.insertCell(0).innerHTML = resultObj.name;
         row.insertCell(1).innerHTML = resultObj.email;
@@ -126,21 +150,22 @@ function formValidation() {
     return true;
 }
 
-function deleteForm(obj) {
+deleteForm = obj => {
     var confirmDelete = confirm("Are you sure to delete the record ? ")
     if (confirmDelete) {
         var index = obj.parentNode.parentNode.rowIndex;
         document.getElementById("resultTable").deleteRow(index);
         finalResult.splice(index - 2, 1);
+        localStorage.setItem("storageValues", JSON.stringify(finalResult));
         document.getElementById("registrationForm").reset()
         document.getElementById("edit").value = "Submit";
     }
 }
 
-function editForm(obj) {
+editForm = obj => {
+    // function editForm(obj) {
     document.getElementById("edit").value = "Update";
     var indx = obj.parentNode.parentNode.rowIndex;
-    console.log("obj", indx)
     var editRow = finalResult[indx - 2]
     indexValue = indx - 2;
     document.getElementById("name").value = editRow.name;
@@ -150,18 +175,38 @@ function editForm(obj) {
     document.getElementById("address").value = editRow.address;
     var genderTemp = editRow.gender.split(", ")
     var courseTemp = editRow.course.split(", ")
-    for (let i = 0; i < genderTemp.length; i++) {
-        if (genderTemp[i] !== '') {
-            document.getElementById(genderTemp[i].toLowerCase()).checked = true;
+    genderTemp.forEach(ele => {
+        if (ele !== '') {
+            document.getElementById(ele.toLowerCase()).checked = true;
         }
-    }
-    for (let i = 0; i < courseTemp.length; i++) {
-        if (courseTemp[i] !== '') {
-            document.getElementById(courseTemp[i].toLowerCase()).checked = true;
+    })
+
+    const courseArr = document.querySelectorAll("input[name = 'course']")
+    courseArr.forEach(ele => {
+        document.getElementById(ele.value.toLowerCase()).checked = false;
+
+    })
+    courseTemp.forEach(ele => {
+        if (ele !== '') {
+            document.getElementById(ele.toLowerCase()).checked = true;
         }
-    }
+    })
+    // for (let i = 0; i < genderTemp.length; i++) {
+    //     if (genderTemp[i] !== '') {
+    //         document.getElementById(genderTemp[i].toLowerCase()).checked = true;
+    //     }
+    // }
+    // for (let i = 0; i < courseTemp.length; i++) {
+    //     if (courseTemp[i] !== '') {
+    //         document.getElementById(courseTemp[i].toLowerCase()).checked = true;
+    //     }
+    // }
 
 
+}
+
+reset = () => {
+    document.getElementById("edit").value = "Submit";
 }
 
 
