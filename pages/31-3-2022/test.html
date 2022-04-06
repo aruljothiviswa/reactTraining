@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <script>
+        function validateForm(){
+            var name = document.regForm.name;
+            var password = document.regForm.password;
+            var repassword = document.regForm.repassword;
+            if(name.value == '' || name.value == null){
+                alert('boss, please enter user name');
+                name.focus()
+                return false;
+            }
+            if(name.value.length <5 || name.value.length > 15){
+                alert('boss, please enter user name shoud between 5 to 15');
+                name.focus()
+                return false;
+            }
+            if(!/^[a-zA-Z]*$/g.test(name.value)){
+                alert("Invalid characters, only alphabets are allowed");
+                name.focus();
+                return false;
+            }
+            if(password.value != repassword.value){
+                alert("password and repassword must match")
+                password.focus();
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <form name="regForm" onsubmit="event.preventDefault();validateForm()">
+    <pre>
+        Name: <input name="name" id="name">
+        Password: <input type="password" id="password" name="password">
+        RetypePasword: <input type="password" id="repassword" name="repassword">
+        <input type="submit" value="submit">
+    </pre>
+    </form>
+</body>
+</html>

@@ -1,0 +1,27 @@
+.App {
+  margin-left:30%;
+  margin-top:3%;
+}
+
+.functionClass{
+  text-align: center;
+  color:rgb(27, 2, 93);
+}
+
+tr,td{
+  border:1px solid black;
+  border-width: 2px;
+}
+
+.heading{
+  width:150px;
+  font-size:20px;
+  color:rgb(79, 5, 73);
+}
+
+.content{
+  width:350px;
+  font-size:18px;
+  color:rgb(101, 29, 74);
+}
+
