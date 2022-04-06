@@ -2,20 +2,9 @@
 <meta charset="UTF-8">
 
 <head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <title>FreshFruits MiniMart</title>
-    <nav id="head1" class="navbar navbar-expand navbar-dark bg-info">
-        <div class="container-fluid">
-            <img class="rounded float-left" style="height:100px;width:100px" src="../../fruitsLogo.jpg">
-            <span href="#" class="navbar-brand">&nbsp;MiNi MaRt</span>
-            <div class="navbar-nav ms-auto">
-                <a href="#home" class="nav-item nav-link active" onclick="getHome()">Home</a>
-                <a href="#about" class="nav-item nav-link active" onclick="getAbout()">About Us</a>
-                <a href="#contact" class="nav-item nav-link active" onclick="getContact()">Contact Us</a>
-            </div>
-        </div>
-    </nav>
+
 
     <!-- <div id="head1">
         <nav>
@@ -32,9 +21,30 @@
         </nav>
     </div> -->
     <!-- <hr> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
+    <nav id="head1" class="navbar navbar-expand-lg navbar-dark bg-info">
+        <div class="container-fluid">
+            <img class="rounded float-left" style="height:100px;width:100px" src="../../fruitsLogo.jpg">
+            <span href="#" class="navbar-brand">&nbsp;MiNi MaRt</span>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="navbar-nav ms-auto">
+                    <a href="#home" class="nav-item nav-link active" onclick="getHome()">Home</a>
+                    <a href="#about" class="nav-item nav-link active" onclick="getAbout()">About Us</a>
+                    <a href="#contact" class="nav-item nav-link active" onclick="getContact()">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </nav>
     <div id="homeContent" class="container">
         <div class="row">
             <div class="col-2">
@@ -159,14 +169,17 @@
                                 Checked checkbox
                             </label>
                         </div><br> -->
-                        <button class="resetButton btn btn-warning" type="reset" value="Reset" onclick="resetForm()">Reset</button>
+                        <button class="resetButton btn btn-warning" type="reset" value="Reset"
+                            onclick="resetForm()">Reset</button>
                         <input type="submit" id="edit" class="btn btn-primary">
                     </form>
                 </div>
                 <div id="getFruitsDetails" class="getFruitsDetails">
                     <table class="table" id="resultTable">
                         <tr>
-                            <th colspan="6" class="heading"> <h2>Fruits List</h2></th>
+                            <th colspan="6" class="heading">
+                                <h2>Fruits List</h2>
+                            </th>
                         </tr>
                         <tr>
                             <td class="result"> Fruit Name</td>
@@ -213,6 +226,9 @@
             Email :info@FreshFruitsMinimart.sg>
             </pre>
     </div>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="../../js/1-4-2022/webPage.js"></script>
 </body>
 
