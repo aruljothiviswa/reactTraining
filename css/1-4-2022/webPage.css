@@ -1,0 +1,148 @@
+/* img{
+    width:150px;
+    height:150px;
+} */
+.head1{
+    background-color: bisque;
+    position: fixed;
+}
+.topnav{
+    float:right;
+    margin-top: 30px;
+    margin-right:20px;
+}
+
+.logo h1{
+    color: rgb(96, 7, 93);
+    position: relative;
+    top: 35px;
+    left: 15px;
+}
+
+.logo img {
+    float: left;
+    width: 100px;
+    height: 100px;
+    background: #555;
+  }
+
+   hr{
+    background-color:rgb(116, 30, 197);
+    margin-left:0;
+    border-width:medium;
+    margin-top: 75px;
+    width: 99%;
+  }
+  
+footer {
+    width:100%;
+    position: fixed;
+    bottom: 0;
+    align-items: center;
+    color:blue;
+  }
+
+  .footerText{
+      text-align:center;
+      margin-left:45%;
+  }
+
+  .centered{
+    float:left;
+    margin-top:50px;
+    width:10%;
+    height:100%;
+  }
+
+   .centered1 , .addFruitsDetails, .getFruitsDetails{
+    float:right;
+    margin-top:50px;
+    width:85%;
+    height:100%
+  }
+
+  .centered1 img{
+       width:300px;
+       height: 300px;
+     }
+
+.contactContent img{
+  float:right;
+  width:50%;
+  height:25%;
+}
+
+.subTitle{
+  color:green;
+}
+
+.subTitle1{
+  color:rgb(19, 0, 128);
+}
+
+ /* .vertical {
+  border-left: 2px solid black;
+  height: 100%;
+  position:absolute;
+  left: 10%;
+} */
+  /* a{
+    cursor: pointer;
+  } */
+
+
+  .formTable {
+    width: 40%;
+    padding: 5px;
+    border: 1px solid darkgoldenrod;
+    margin-top: 5%;
+    background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("../../fruitsLogo.jpg");
+    /* background-image: url("../../fruitsLogo.jpg"); */
+    background-size: cover;
+  }
+
+  .button{
+    border:none;
+    /* background: #ccdef2; */
+}
+
+.subButton{
+    color:white;
+    background:rgb(7, 112, 7);
+    width:150px;
+    height:30px;
+}
+
+.resetButton{
+  color:white;
+  background:rgb(219, 147, 13);
+  width:150px;
+  height:30px;
+}
+.formTable tr{
+  height:40px;
+}
+
+.resultTable{
+  width:60%;
+  float:left;
+  margin:5px;
+  border: 1px solid darkgoldenrod;
+  background-image: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), url("../../fruitsLogo.jpg");
+  /* background-image: url("../../fruitsLogo.jpg"); */
+  background-size: cover;
+}
+
+.delete{
+  color:red;
+  cursor: pointer;
+}
+
+.heading{
+  color:rgb(4, 4, 107)
+}
+
+.resultTable tr{
+  height:30px;
+}
+

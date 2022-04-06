@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <title>FreshFruits MiniMart</title>
+    <nav id="head1" class="navbar navbar-expand navbar-dark bg-info">
+        <div class="container-fluid">
+            <img class="rounded float-left" style="height:100px;width:100px" src="../../fruitsLogo.jpg">
+            <span href="#" class="navbar-brand">&nbsp;MiNi MaRt</span>
+            <div class="navbar-nav ms-auto">
+                <a href="#home" class="nav-item nav-link active" onclick="getHome()">Home</a>
+                <a href="#about" class="nav-item nav-link active" onclick="getAbout()">About Us</a>
+                <a href="#contact" class="nav-item nav-link active" onclick="getContact()">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- <div id="head1">
+        <nav>
+            <div class="logo">
+                <img src="../../fruitsLogo.jpg">
+                <h1>MiNi MaRt</h1>
+            </div>
+
+            <div class="topnav">
+                <a href="#home" onclick="getHome()">Home</a>&nbsp;
+                <a href="#about" onclick="getAbout()">About Us</a>&nbsp;
+                <a href="#contact" onclick="getContact()">Contact Us</a>
+            </div>
+        </nav>
+    </div> -->
+    <!-- <hr> -->
+</head>
+
+<body>
+    <div id="homeContent" class="container">
+        <div class="row">
+            <div class="col-2">
+                <div class="centered"><br><br>
+                    <button style="padding:5px;margin-bottom:10px" type="submit" class="btn btn-info"
+                        onclick="addFruits()">Add Fruits >>></button><br>
+                    <button type="submit" class="btn btn-info" onclick="getFruits()">Fruit List >>></button>
+                    <!-- <a href="#" onclick="addFruits()">Add Fruits</a><br><br>
+                    <a href="#" onclick="getFruits()">Fruit List</a> -->
+                </div>
+            </div>
+            <div class="col-10">
+                <div id="fruitsDetails" class="centered1">
+                    <table>
+                        <tr>
+                            <td style="padding-top:25px"><img class="rounded" src="../../fruits.jpg"
+                                    style="height:300px;width:300px"></td>
+                            <td style="padding-top:25px"><img class="rounded" src="../../fruit.jpg"
+                                    style="height:300px;width:300px"></td>
+                            <td style="padding-top:25px"><img class="rounded" src="../../fru.jpg"
+                                    style="height:300px;width:300px"></td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="addFruitsDetails" class="container">
+                    <form name="addFruitForm" id="addFruitForm" onsubmit="event.preventDefault();addFruitStock()">
+                        <h2>Add Fruit Stock Details</h2><br>
+                        <div class="form-group">
+                            <input class="form-control" style="width:50%" name="name" id="name"
+                                placeholder="Fruit Name">
+                        </div><br>
+                        <!-- <div class="form-group">
+                            <input class="form-control" style="width:50%" name="quantity" id="quantity"
+                                placeholder="Quantity(Kg)">
+                        </div><br> -->
+                        <div class="form-group">
+                            <input class="form-control" style="width:50%" name="price" id="price"
+                                placeholder="Price (per Kg)">
+                        </div><br>
+
+                        Color of Fruit :
+                        <div class="d-flex">
+                            <div class="form-check">
+                                <!-- <input type="checkbox" id="react" name="course" value="React">ReactJS&nbsp;
+                            <input type="checkbox" id="node" name="course" value="Node">NodeJS&nbsp;
+                            <input type="checkbox" id="mongo" name="course" value="Mongo">MongoDB -->
+
+                                <input class="form-check-input" type="checkbox" name="color" value="Red Color"
+                                    id="red color">
+                                <label class="form-check-label" for="redColor">
+                                    Red Color
+                                </label>
+                            </div> &nbsp;
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="color" value="Green Color"
+                                    id="green color">
+                                <label class="form-check-label" for="greenColor">
+                                    Green Color
+                                </label>
+                            </div>&nbsp;
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="color" value="Purple Color"
+                                    id="purple color">
+                                <label class="form-check-label" for="purpleColor">
+                                    Purple Color
+                                </label>
+                            </div>&nbsp;
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="color" value="Orange Color"
+                                    id="orange color">
+                                <label class="form-check-label" for="orangeColor">
+                                    Orange Color
+                                </label>
+                            </div>
+                        </div><br>
+                        <div class="d-flex">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="organic" id="organic"
+                                    value="Organic">
+                                <label class="form-check-label" for="organic">
+                                    Organic
+                                </label>
+                            </div>&nbsp;
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="organic" id="non-organic"
+                                    value="Non-Organic">
+                                <label class="form-check-label" for="non-organic">
+                                    Non-Organic
+                                </label>
+                            </div>
+                        </div><br>
+
+                        <!-- <div class="dropdown">
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"  id="fruitType">
+                                Fruits Type
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">All</a>
+                                <a class="dropdown-item" href="#">Citrus</a>
+                                <a class="dropdown-item" href="#">Stone fruit</a>
+                                <a class="dropdown-item" href="#">Tropical and exotic</a>
+                                <a class="dropdown-item" href="#">Berries</a>
+                                <a class="dropdown-item" href="#">Melons</a>
+                                <a class="dropdown-item" href="#">Apples and pears</a>
+                            </div>
+                        </div><br> -->
+                        <div class="dropdown">
+                            <select name="fruitType" id="fruitType">
+                                <option value="All">All</option>
+                                <option value="Citrus">Citrus</option>
+                                <option value="Stone fruit">Stone fruit</option>
+                                <option value="Tropical and exotic">Tropical and exotic</option>
+                                <option value="Berries">Berries</option>
+                                <option value="Melons">Melons</option>
+                                <option value="Apples and pears">Apples and pears</option>
+                            </select>
+                        </div><br>
+
+                        <!-- <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                            <label class="form-check-label" for="flexCheckChecked">
+                                Checked checkbox
+                            </label>
+                        </div><br> -->
+                        <button class="resetButton btn btn-warning" type="reset" value="Reset" onclick="resetForm()">Reset</button>
+                        <input type="submit" id="edit" class="btn btn-primary">
+                    </form>
+                </div>
+                <div id="getFruitsDetails" class="getFruitsDetails">
+                    <table class="table" id="resultTable">
+                        <tr>
+                            <th colspan="6" class="heading"> <h2>Fruits List</h2></th>
+                        </tr>
+                        <tr>
+                            <td class="result"> Fruit Name</td>
+                            <td class="result"> Price Per Kg</td>
+                            <td class="result"> Fruit Type</td>
+                            <td class="result"> Organic</td>
+                            <td class="result"> Color</td>
+                            <td class="result"> Action</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div id="aboutContent">
+        <h1 class="subTitle1">About Us</h1>
+        <pre>
+            <img src="../../about-us.jpg" alt="Smiley face" style="float:right;width:30%;height:30%;">
+            <span class="subTitle"><b> Operating Hours</b></span>
+
+
+            Monday to Friday: 9am to 10pm<br>
+            Saturday : 7am to 10pm<br>
+            Sunday : Closed
+
+
+            ​
+            Shop will be closed on public holidays and stipulated closure dates
+        </pre><br>
+
+    </div>
+    <div id="contactContent">
+        <h1 class="subTitle1">Contact Us</h1>
+        <pre>
+        <img src="../../Contact-Us.jpg" style="float:right;width:50%;height:25%;">
+        <span class="subTitle"><b> Address</b></span>
+
+            # 3 , Tah Ching Road, 
+            Jurong East,
+            Singapore – 619 603
+            Phone : +65 9920XXXX | Hotline : +65 9040XXXX
+           
+            Email :info@FreshFruitsMinimart.sg>
+            </pre>
+    </div>
+    <script src="../../js/1-4-2022/webPage.js"></script>
+</body>
+
+<footer class="footer fixed-bottom bg-info">
+    <div class="footer-copyright text-center py-3">&copy; 2020 Copyright:
+        <a href="#"> MiniMart.com</a>
+    </div>
+</footer>
