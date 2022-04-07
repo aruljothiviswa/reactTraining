@@ -1,4 +1,4 @@
-.App {
+.App , .main {
   margin-left:30%;
   margin-top:3%;
 }
@@ -24,4 +24,16 @@ tr,td{
   font-size:18px;
   color:rgb(101, 29, 74);
 }
+
+.destruc{
+  margin-left: 10%;
+  color:rgb(5, 5, 103);
+}
+
+.arith{
+  font-size:20px;
+  color:rgb(79, 5, 73);
+}
+
+
 

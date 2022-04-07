@@ -8,7 +8,7 @@ export default function ProdComp(props) {
     }
     return (
         <>
-            <h1>LG Product Details</h1>
+            <h1 className="functionClass">LG Product Details</h1>
             <table className="table table-striped">
                 <tbody>
                     <tr>
@@ -19,7 +19,7 @@ export default function ProdComp(props) {
                         <th>Image</th>
                     </tr>
                     {tempArr.map((item) => (
-                        <tr>
+                        <tr key={item.productId}>
                             <td>{item.productId}</td>
                             <td>{item.productName}</td>
                             <td>{item.price}</td>
