@@ -1,7 +1,7 @@
 import '../App.css';
 
 export default function ProdComp(props) {
-    let tempArr = [...props.value];
+    let tempArr = [...props.val];
     var style = {
         width: '100px',
         height: '80px'
@@ -9,7 +9,7 @@ export default function ProdComp(props) {
     return (
         <>
             <h1>LG Product Details</h1>
-            <table class="table table-striped">
+            <table className="table table-striped">
                 <tbody>
                     <tr>
                         <th>Product Id</th>

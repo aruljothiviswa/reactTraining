@@ -26,20 +26,20 @@ class ClassComp extends Component {
                 <div className="App">
                     <table >
                         <tr>
-                            <td class="heading">Product ID</td>
-                            <td class="content">{this.state.producitId}</td>
+                            <td className="heading">Product ID</td>
+                            <td className="content">{this.state.producitId}</td>
                         </tr>
                         <tr>
-                            <td class="heading">ProductName</td>
-                            <td class="content">{this.state.productName}</td>
+                            <td className="heading">ProductName</td>
+                            <td className="content">{this.state.productName}</td>
                         </tr>
                         <tr>
-                            <td class="heading">Price</td>
-                            <td class="content"> {this.state.price}</td>
+                            <td className="heading">Price</td>
+                            <td className="content"> {this.state.price}</td>
                         </tr>
                         <tr>
-                            <td class="heading">description</td>
-                            <td class="content"> {this.state.description}</td>
+                            <td className="heading">description</td>
+                            <td className="content"> {this.state.description}</td>
                         </tr>
                     </table><br></br>
                     <button className={'btn btn-primary'} type="submit" onClick={this.updateProduct}>Click to change</button>

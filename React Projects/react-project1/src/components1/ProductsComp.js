@@ -13,7 +13,7 @@ export default function ProductsComp(props) {
 
     return (
         <>
-            <ProdComp value={product}/>
+            <ProdComp val={product}/>
         </>
     )
 }
