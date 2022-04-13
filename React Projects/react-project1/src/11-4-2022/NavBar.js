@@ -7,6 +7,8 @@ import { employeeDetails } from './productDetails.js'
 import EmpContent from './EmpContent';
 import AboutUs from './AboutUs';
 import Registration from './Registration';
+import LifeCycle from '../13-4-2022/LifeCycle';
+import FunctionalCompUseEffect from '../13-4-2022/FunctionalCompUseEffect';
 
 export default function NavBar() {
     const data = productData;
@@ -18,7 +20,8 @@ export default function NavBar() {
     const getContact = () => setContent(<ContactUs />)
     const getRegister = () => setContent(<Registration />)
     const empDetails = () => setContent(<EmpContent data={empData} />)
-    const changePage = (value) => value; 
+    const getProducts = () => setContent(<LifeCycle />)
+    const getProductsFunction = () => setContent(<FunctionalCompUseEffect />)
 
     return (
         <>
@@ -30,27 +33,31 @@ export default function NavBar() {
                 <div className="dropdown d-sm-block d-xs-block d-md-none d-lg-none">
                     <span className="dropdown-toggler drop " type="button" data-toggle="dropdown">
                         <span className="navbar-toggler-icon "></span>
-                        <ul className='dropdown-menu custDrop' >
+                        <span className='dropdown-menu custDrop' >
+                            <a href="#home" className="nav-item nav-link active" onClick={getHome}>Home</a>
+                            <a href="#contact" className="nav-item nav-link active" onClick={empDetails}>Employee Details</a>
+                            <a href="#register" className="nav-item nav-link active" onClick={getRegister}>Registration</a>
+                            <a href="#product" className="nav-item nav-link active" onClick={getProducts}>Product API</a>
+                            <a href="#product" className="nav-item nav-link active" onClick={getProductsFunction}>UseEffect Product</a>
+                            <a href="#about" className="nav-item nav-link active" onClick={getAbout}>About Us</a>
+                            <a href="#contact" className="nav-item nav-link active" onClick={getContact}>Contact Us</a>
+                        </span>
+                        {/* <ul className='dropdown-menu custDrop' >
                             <li><a href="#home" className="nav-item nav-link active" onClick={getHome}><u>Home</u></a></li>
                             <li><a href="#contact" className="nav-item nav-link active" onClick={empDetails}><u>Employee Details</u></a></li>
                             <li><a href="#register" className="nav-item nav-link active" onClick={getRegister}><u>Registration</u></a></li>
                             <li><a href="#about" className="nav-item nav-link active" onClick={getAbout}><u>About Us</u></a></li>
                             <li><a href="#contact" className="nav-item nav-link active" onClick={getContact}><u>Contact Us</u></a></li>
-                        </ul>
-                        {/* <span className='dropdown-menu custDrop' >
-                                <a href="#home" className="nav-item nav-link " value={getHome} onChange="changePage(value)"><u>Home</u></a>
-                                <a href="#contact" className="nav-item nav-link " value={empDetails} onChange={empDetails}><u>Employee Details</u></a>
-                                <a href="#register" className="nav-item nav-link active" value={getRegister} onChange={getRegister}><u>Registration</u></a>
-                                <a href="#about" className="nav-item nav-link active" value={getAbout} onChange={getAbout}><u>About Us</u></a>
-                                <a href="#contact" className="nav-item nav-link active" value={getContact} onChange={getContact}><u>Contact Us</u></a>
-                        </span> */}
+                         </ul> */}
                     </span>
                 </div>
                 <div className="collapse navbar-collapse hidden-sm hidden-xs" id="navbarNav">
                     <div className="navbar-nav ms-auto">
                         <a href="#home" className="nav-item nav-link active" onClick={getHome}>Home</a>
                         <a href="#contact" className="nav-item nav-link active" onClick={empDetails}>Employee Details</a>
-                        <a href="#contact" className="nav-item nav-link active" onClick={getRegister}>Registration</a>
+                        <a href="#register" className="nav-item nav-link active" onClick={getRegister}>Registration</a>
+                        <a href="#product" className="nav-item nav-link active" onClick={getProducts}>Product API</a>
+                        <a href="#product" className="nav-item nav-link active" onClick={getProductsFunction}>UseEffect Product</a>
                         <a href="#about" className="nav-item nav-link active" onClick={getAbout}>About Us</a>
                         <a href="#contact" className="nav-item nav-link active" onClick={getContact}>Contact Us</a>
                     </div>
@@ -60,4 +67,4 @@ export default function NavBar() {
         </>
     )
 
-    }
+}

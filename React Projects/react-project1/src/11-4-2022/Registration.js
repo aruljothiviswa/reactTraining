@@ -2,13 +2,25 @@ import { useState } from 'react';
 import '../App.css';
 
 export default function Registration() {
-    let [register, setRegister] = useState({ userName: '', email: '', contactNumber: '', gender: '', graduation: 'HSC', address: '', course1: '', course2: "", course3: "" })
+    let [register, setRegister] = useState({
+        userName: '', email: '', contactNumber: '', gender: '', graduation: 'HSC', address: '',
+        course1: '', course2: "", course3: ""
+    })
     const { userName, email, contactNumber, gender, graduation, address } = register;
     var storageArray = JSON.parse(localStorage.getItem('registrationForm'));
     if (storageArray == null) storageArray = [];
     const changeHandler = (event) => {
         setRegister({ ...register, [event.target.name]: event.target.value })
     }
+
+    const changeCheckboxHandler = (e) => {
+        if (e.target.checked) {
+            setRegister({ ...register, [e.target.name]: e.target.value })
+        } else {
+            setRegister({ ...register, [e.target.name]: '' })
+        }
+    }
+    // {e => this.handleChange(e)}
     const submitHandler = (event) => {
         event.preventDefault()
         var course = '';
@@ -87,27 +99,20 @@ export default function Registration() {
                             <div className="row">
                                 <div className='col-4'> Course</div>
                                 <div className='col-8'>
-                                    {/* <input type='text' name='userName' value={userName} onChange={changeHandler} /> */}
-
-                                    {/* <div class="d-flex"> */}
                                     <div className="form-check">
-                                        {/* <!-- <input type="checkbox" id="react" name="course" value="React">ReactJS&nbsp;
-                                                <input type="checkbox" id="node" name="course" value="Node">NodeJS&nbsp;
-                                                    <input type="checkbox" id="mongo" name="course" value="Mongo">MongoDB --> */}
-
-                                        <input className="form-check-input" type="checkbox" name="course1" value="Digital Electronics" onClick={changeHandler} id="digital electronics" />
+                                        <input className="form-check-input" type="checkbox" name="course1" value="Digital Electronics" onClick={changeCheckboxHandler} id="digital electronics" />
                                         <label className="form-check-label" htmlFor="redColor">
                                             Digital Electronics
                                         </label>
                                     </div> &nbsp;
                                     <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" name="course2" value="Electronic Engineering" onClick={changeHandler} id="electronic engineering" />
+                                        <input className="form-check-input" type="checkbox" name="course2" value="Electronic Engineering" onClick={changeCheckboxHandler} id="electronic engineering" />
                                         <label className="form-check-label" htmlFor="greenColor">
                                             Electronic Engineering
                                         </label>
                                     </div>&nbsp;
                                     <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" name="course3" value="Power Electronics" onClick={changeHandler} id="power electronics" />
+                                        <input className="form-check-input" type="checkbox" name="course3" value="Power Electronics" onClick={changeCheckboxHandler} id="power electronics" />
                                         <label className="form-check-label" htmlFor="purpleColor">
                                             Power Electronics
                                         </label>
