@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div id="getFruitsDetails" class="col">
+                <table class="table table-striped" id="resultTable">
+                    <tr>
+                        <th colspan="6" class="heading">
+                            <h2>Covid Report</h2>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td class="result"> Country Name</td>
+                        <td class="result"> Country Code</td>
+                        <td class="result"> New Confirmed</td>
+                        <td class="result"> New Recovered</td>
+                        <td class="result"> Total Confirmed</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function restAPI(url) {
+            const response = await fetch(url)
+            const data = await response.json()
+            return data
+        }
+        restAPI('https://api.covid19api.com/summary')
+            .then(data => {
+                console.log(data)
+                var finalResult = data.Countries.slice(0, 10)
+                loadValues()
+                function loadValues() {
+                    let row;
+                    let table = document.getElementById("resultTable");
+                    for (var i = table.rows.length - 1; i > 1; i--) {
+                        table.deleteRow(i);
+                    }
+                    finalResult.forEach(ele => {
+                        row = table.insertRow(table.rows.length);
+                        row.insertCell(0).innerHTML = ele.Country;
+                        row.insertCell(1).innerHTML = ele.CountryCode;
+                        row.insertCell(2).innerHTML = ele.NewConfirmed;
+                        row.insertCell(3).innerHTML = ele.NewRecovered;
+                        row.insertCell(4).innerHTML = ele.TotalConfirmed;
+                    })
+                }
+            }).catch(error => console.log(error))
+    </script>
+</body>
+
+</html>

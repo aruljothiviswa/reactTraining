@@ -4,11 +4,21 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import WebPage from './8-4-2022/WebPage';
+import 'bootstrap/dist/js/bootstrap.js';
+import HookWebPage from './11-4-2022/HookWebPage';
+
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  // <React.StrictMode>
+  // <App />
+  //</React.StrictMode>,
+  //React.StrictMode works only in development mode, so no need to worry for production.
+  <React.Fragment>
+    {/* <App /> */}
+    {/* <WebPage /> */}
+    <HookWebPage/>
+  </React.Fragment>,
   document.getElementById('root')
 );
 

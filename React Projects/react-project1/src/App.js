@@ -19,8 +19,8 @@ export default function App() {
     <>
       {/* <Destructure data={detail} />
       <ArithOperations /> */}
-      {/* <ProductsComp data={data} /> */}
-      <CardComp val={data}/>
+      <ProductsComp data={data} />
+      {/* <CardComp val={data}/> */}
     </>
   )
 }
