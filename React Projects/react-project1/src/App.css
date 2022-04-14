@@ -45,15 +45,15 @@ tr,td{
     color:white
   }
 
-  .custDrop{
-    right: 0;
-    left: 'auto';
+  .custDrop,.show{
+    right: 0 !important;
+    left: 'auto' !important;
    }
 
 
 .custCard{
     max-width: '300px';
-    min-height: '450px';
+    height: '100%';
   }
 
   .search{
@@ -124,5 +124,9 @@ tr,td{
 
     .custTable{
       --bs-table-striped-bg: #d8e4f5 !important;
+    }
+
+    .custCardFooter{
+      border-top: 0px;
     }
        
