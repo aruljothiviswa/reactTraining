@@ -50,14 +50,17 @@ export default function Registration() {
             console.log(register)
             // storageArray.push(register);
             axios.post(' https://625cf8a74c36c753576ca3ef.mockapi.io/userRegistration', register)
-                .then(nodeData => console.log(nodeData))
+                .then(() => {
+                    axios.get('https://625cf8a74c36c753576ca3ef.mockapi.io/userRegistration')
+                        .then(nodeData => setData(nodeData.data))
+                    document.getElementById("registerForm").reset()
+                    clearData();
+                })
                 .throw(err => console.log(err))
-            axios.get('https://625cf8a74c36c753576ca3ef.mockapi.io/userRegistration')
-                .then(nodeData => setData(nodeData.data))
+
 
             // localStorage.setItem("registrationForm", JSON.stringify(storageArray));
-            document.getElementById("registerForm").reset()
-            clearData();
+
         }
     }
 
