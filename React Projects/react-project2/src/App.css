@@ -1,0 +1,104 @@
+.custCon{
+margin-top: 20px !important;
+}
+
+.custImg{
+    padding:5%;
+    height:100%;
+    width: 100%;
+  }
+
+  .custColor{
+    /* position: absolute; */
+    left: 0;
+    bottom: 0; 
+    height: auto;
+    width: 100%;
+    color:white
+  }
+
+  nav a{
+      color:white;
+      text-decoration: none;
+  }
+
+  nav a:hover{
+    color:yellow;
+  }
+
+  nav a.active{
+      color:orange;
+  }
+
+  footer {
+    position: fixed;
+    /* position:relative; */
+    bottom: 0;
+    width: 100%;
+}
+
+.custList{
+  color:black ;
+}
+
+.custEdit{
+  cursor:pointer;
+  color:blue;
+}
+
+.custDelete{
+  cursor:pointer;
+  color:red;
+}
+
+.custDiv{
+  border:2px solid rgb(178, 178, 238);
+  background:#d8e4f5;
+}
+
+.custTable{
+  --bs-table-striped-bg: #d8e4f5 !important;
+}
+
+.custHead{
+  margin-top:5%;
+  margin-bottom:5%;
+  margin-left:25%;
+  color:brown;
+}
+
+.custButton{
+  margin-left:40%;
+  margin-bottom:3%;
+  margin-top:1%;
+  width:80%;
+}
+
+.custCont{
+  margin-bottom:80px;
+}
+
+.custCon{
+  margin-bottom:-155px;
+}
+
+.custCard{
+    width: 98%;
+    height: 100%;
+    /* object-fit: cover; */
+    
+  /* max-width: '300px';
+  height: '100%'; */
+}
+
+.custCardRow{
+  margin-bottom: 15px;
+}
+
+.custContain{
+  margin-bottom: 100px;
+  position: static;
+}
+
+
+
