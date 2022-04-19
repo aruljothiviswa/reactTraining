@@ -10,7 +10,9 @@ import AboutUs from './15-4-2022 Router/AboutUs';
 import Registration from './15-4-2022 Router/Registration';
 // import LifeCycle from './15-4-2022 Router/LifeCycle';
 import NotFound from "./15-4-2022 Router/NotFound";
-
+import UserDetails from "./15-4-2022 Router/UserDetails";
+import Register
+  from "./15-4-2022 Router/Register";
 export const dataContext = React.createContext();
 
 function App() {
@@ -28,7 +30,19 @@ function App() {
         <Route path='/' element={<Content />}></Route>
         <Route path='/AboutUs' element={<AboutUs />}></Route>
         <Route path='/ContactUs' element={<ContactUs />}></Route>
-        <Route path='/Registration' element={<Registration />}></Route>
+
+
+
+        <Route path='Register' element={<Register />}>
+          <Route path='Register/:id' element={<UserDetails />} />
+        </Route>
+
+
+
+
+        <Route path='Registration' element={<Registration />}>
+          {/* <Route path=':id' element={<UserDetails />} /> */}
+        </Route>
         <Route path='/EmployeeDetails' element={<EmpContent />}></Route>
         <Route path='/Products' element={<dataContext.Provider value={data}>
           <ParentComponent />
