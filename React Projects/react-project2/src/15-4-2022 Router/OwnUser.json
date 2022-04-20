@@ -1,0 +1,15 @@
+{
+    "users":[{
+        "userName": "Aruljothi",
+        "email": "arul@gmail.com",
+        "contactNumber": 12345678,
+        "gender": "female",
+        "graduation": "PG",
+        "address": "aaaaaaa\naaa\naa",
+        "course": "Power Electronics,",
+        "course1": "course1 2",
+        "course2": "course2 2",
+        "course3": "Power Electronics",
+        "id": "2"
+    }]
+}

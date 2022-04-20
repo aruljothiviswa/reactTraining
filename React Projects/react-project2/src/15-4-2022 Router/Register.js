@@ -103,7 +103,7 @@ export default function Register() {
 
     const clearData = () => {
         setButtonText('Submit')
-        setRegister({ userName: '', email: '', contactNumber: '', gender: '', graduation: '', address: '' })
+        setRegister({ userName: '', email: '', contactNumber: '', gender: '', graduation: 'HSC', address: '' })
     }
 
     const updateConfirm = (event) => {
@@ -272,7 +272,6 @@ export default function Register() {
                                             <button type="button" className="btn btn-outline-primary custBut" onClick={() => updateRegister(item)}>Edit</button>
                                             <button className="btn btn-outline-success custBut" onClick={() => expandRegister(item)}>
                                                 <Link to={item.id}>Expand</Link>
-                                                <Outlet />
                                             </button>
                                             {/* <button type="button" to='/Registration' className="btn btn-outline-success custBut" onClick={() => expandRegister(item)}>Expand</button> */}
                                             <button type="button" className="btn btn-outline-danger custBut" onClick={() => deleteRegister(item)}>Delete</button>
@@ -283,10 +282,10 @@ export default function Register() {
                             ))
                             }
                         </div>
+                        <Outlet />
                     </div>
                 </div>
             </div>
-            {/* <Outlet /> */}
         </>
     )
 

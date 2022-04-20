@@ -34,8 +34,8 @@ function App() {
 
 
         <Route path='Register' element={<Register />}>
-          <Route path='Register/:id' element={<UserDetails />} />
         </Route>
+        <Route path='Register/:id' element={<UserDetails />} />
 
 
 

@@ -107,4 +107,22 @@ margin-right:5%;
 width:22%;
 }
 
+.custTab{
+  border: none;
+  margin-left:35%;
+
+}
+
+.custTab tr td{
+  padding:10px;
+}
+
+.custTitle{
+  color:blue;
+  margin-left:40%;
+}
+
+.custbtn{
+  margin-left:45%;
+}
 
