@@ -2,144 +2,26 @@ import React, { useState, useEffect } from 'react';
 import '../App.css';
 import axios from 'axios';
 import { Link, Outlet } from 'react-router-dom'
+import { useForm } from 'react-hook-form';
 
-export default function Register() {
+export default function UseForm() {
+    const baseURL = "https://625cf8a74c36c753576ca3ef.mockapi.io/users"
+    const { register, handleSubmit, formState: { errors }, setValue } = useForm();
+    const [apiData, setApiData] = useState([])
 
-    const [buttonText, setButtonText] = useState("Submit");
-    const [updateId, setupdateId] = useState("")
-    const [data, setData] = useState([])
     useEffect(() => {
-        axios.get('https://625cf8a74c36c753576ca3ef.mockapi.io/users')
-            .then(nodeData => setData(nodeData.data))
+        getData()
     }, [])
 
-    let [register, setRegister] = useState({
-        userName: '', email: '', contactNumber: '', gender: '', graduation: 'HSC', address: '',
-        course1: '', course2: "", course3: "", selectedFile: null
-    })
-    const { userName, email, contactNumber, gender, graduation, address, course1, course2, course3, selectedFile } = register;
-    var storageArray = JSON.parse(localStorage.getItem('registrationForm'));
-    if (storageArray == null) storageArray = [];
-    const changeHandler = (event) => {
-        setRegister({ ...register, [event.target.name]: event.target.value })
+    const addUserDetails = () => {
+        axios.post(baseURL)
+            .then(() => getData())
     }
 
-    const changeCheckboxHandler = (e) => {
-        if (e.target.checked) {
-            setRegister({ ...register, [e.target.name]: e.target.value })
-        } else {
-            setRegister({ ...register, [e.target.name]: '' })
-        }
-    }
-    // {e => this.handleChange(e)}
-    const submitHandler = (event) => {
-        event.preventDefault()
-        var course = '';
-        debugger;
-
-        for (let val in register) {
-            if (val.includes('course')) {
-                if (register[val] != '') course = course + register[val] + ', ';
-            }
-        }
-        if (course != '') course = (course.trim()).substring(0, course.length - 1)
-
-        if (userName.length < 5)
-            alert('UserName should be atleast 5 characters')
-        else if (contactNumber.length < 8)
-            alert("contactNumber should be atleast 8 Numbers")
-        else if (gender == '') alert("Please select gender")
-        else if (course == '') alert("Please select course")
-        else if (address == '') alert("Please enter Address")
-        else {
-            register = { ...register, course: course, contactNumber: Number(contactNumber) }
-            // storageArray.push(register);
-            // if (value.buttonText === "Submit") {
-            axios.post(' https://625cf8a74c36c753576ca3ef.mockapi.io/users', register)
-                .then(() => {
-                    document.getElementById("registerForm").reset()
-                    clearData();
-                    alert("File Submitted successfully...");
-                    axios.get('https://625cf8a74c36c753576ca3ef.mockapi.io/users')
-                        .then(nodeData => setData(nodeData.data))
-
-                })
-                .throw(err => console.log(err))
-
-            // localStorage.setItem("registrationForm", JSON.stringify(storageArray));
-
-        }
-    }
-
-    const updateRegister = (event) => {
-        setupdateId(event.id)
-        setButtonText('Update')      
-        setRegister({
-            userName: event.userName, email: event.email, contactNumber: event.contactNumber, gender: event.gender, graduation: event.graduation, address: event.address, course1: event.course1,
-            course2: event.course2, course3: event.course3, selectedFile: event.selectedFile
-        })
-    }
-
-    const deleteRegister = (event) => {
-        var deleteConfirm = window.confirm(`${'Are you sure to delete ' + event.userName.toUpperCase() + ' record ?'}`)
-        if (deleteConfirm) {
-            axios.delete('https://625cf8a74c36c753576ca3ef.mockapi.io/users/' + event.id)
-                .then(() => {
-                    document.getElementById("registerForm").reset()
-                    clearData();
-                    axios.get('https://625cf8a74c36c753576ca3ef.mockapi.io/users')
-                        .then(nodeData => setData(nodeData.data))
-                    alert("File Deleted successfully...");
-                })
-        }
-    }
-
-    const clearData = () => {
-        setButtonText('Submit')
-        setRegister({ userName: '', email: '', contactNumber: '', gender: '', graduation: 'HSC', address: '', selectedFile: null })
-    }
-
-    const updateConfirm = (event) => {
-        console.log("aaaaaaaaaaaaaa", updateId)
-        event.preventDefault()
-        var course = '';
-        for (let val in register) {
-            if (val.includes('course')) {
-                if (register[val] != '') course = course + register[val] + ', ';
-            }
-        }
-        if (course != '') course = (course.trim()).substring(0, course.length - 1)
-
-        if (userName.length < 5)
-            alert('UserName should be atleast 5 characters')
-        else if (contactNumber.length < 8)
-            alert("contactNumber should be atleast 8 Numbers")
-        else if (gender == '') alert("Please select gender")
-        else if (course == '') alert("Please select course")
-        else if (address == '') alert("Please enter Address")
-        else {
-            register = { ...register, course: course, contactNumber: Number(contactNumber) }
-
-            axios.put('https://625cf8a74c36c753576ca3ef.mockapi.io/users/' + updateId, register)
-                .then((res) => {
-                    document.getElementById("registerForm").reset()
-                    clearData();
-                    alert("File Updated successfully...");
-                    // console.log(res)
-                    axios.get('https://625cf8a74c36c753576ca3ef.mockapi.io/users')
-                        .then(nodeData => setData(nodeData.data))
-
-                })
-        }
-    }
-
-    const expandRegister = () => {
-        console.log("ddddd")
-    }
-
-    const setPicture = (e) => {
-        console.log(e.target.files[0])
-        setRegister({ ...register, selectedFile: e.target.files[0] })
+    const getData = () => {
+        axios.get(baseURL)
+            .then(nodeData => setApiData(nodeData.data))
+            
     }
 
     return (
@@ -148,26 +30,32 @@ export default function Register() {
                 <div className='row'>
                     <div className='col-sm-12 col-md-6 custDiv'>
                         <h3 className="custHead">Registration Form</h3>
-                        <form id="registerForm">
+                        <form id="registerForm" onSubmit={handleSubmit(addUserDetails)}>
                             <div className="row">
                                 <div className='col-4'> UserName</div>
                                 <div className='col-6'>
-                                    <input type='text' name='userName' value={userName} onChange={changeHandler} />
+                                    <input type='text' {...register('userName', { required: true, pattern: /^[a-zA-Z ]*$/ })} />
+                                    {errors.userName?.type === 'required' && <p className="custErr">User Name Required</p>}
+                                    {errors.userName?.type === 'pattern' && <p className="custErr">Invalid UserName</p>}
                                 </div>
                             </div><br></br>
                             <div className="row">
                                 <div className='col-4'> Email  </div>
                                 <div className='col-6'>
-                                    <input type='email' name='email' value={email} onChange={changeHandler} />
+                                    <input type='email' {...register('email', { required: true, })} />
+                                    {errors.email?.type === 'required' && <p className="custErr">Email Required</p>}
                                 </div>
                             </div><br />
                             <div className="row">
                                 <div className='col-4'>Contact No </div>
                                 <div className='col-6'>
-                                    <input type='number' name='contactNumber' value={contactNumber} onChange={changeHandler} />
+                                    <input type='number' {...register('contactNumber', { required: true, minLength: 5 })} />
+                                    {errors.contactNumber?.type === 'required' && <p className="custErr">Contact Number Required</p>}
+                                    {errors.contactNumber?.type === 'minLength' && <p className="custErr">Minimum 5 numbers required</p>}
+
                                 </div>
                             </div><br />
-                            <div className="row">
+                            {/* <div className="row">
                                 <div className='col-4'>Gender</div>
                                 <div className='col-6'>
                                     <div className="d-flex">
@@ -235,60 +123,51 @@ export default function Register() {
                                 <div className='col-6'>
                                     <div className="form-group">
                                         <textarea id="address" name="address" value={address} onChange={changeHandler} rows="4" cols="20"></textarea>
-                                        {/* <textarea type="text" className="form-control" id="address"  rows="3"></textarea> */}
                                     </div>
                                 </div>
                             </div>
-                            {/* <div className='row'>
-                                <div className='col'>
-                                    <div className="form-group">
-                                        <input type="file" onChange={setPicture} />
-                                    </div>
-                                </div>
-                            </div> */}
+                           
 
                             <div className='row'>
                                 <div className='col-5'>
                                     <input className="btn btn-primary custButton" type='reset' name='Reset' onClick={clearData} />
                                 </div>
-                                <div className='col-5'>
-                                    <button style={{ display: (`${buttonText}` === 'Submit' ? 'block' : 'none') }} className="btn btn-primary custButton" type='submit' name='submit' onClick={submitHandler}>Submit</button>
-                                    <button style={{ display: (`${buttonText}` === 'Update' ? 'block' : 'none') }} className="btn btn-primary custButton" type='submit' name='submit' onClick={updateConfirm}>Update</button>
+                                <div className='col-5'>*/}
+                            <button className="btn btn-primary" type='submit' name='submit' >Submit</button><br></br>
+                            {/* <button style={{ display: (`${buttonText}` === 'Update' ? 'block' : 'none') }} className="btn btn-primary custButton" type='submit' name='submit' onClick={updateConfirm}>Update</button>
 
                                 </div>
 
-                            </div>
+                            </div>  */}
                         </form>
                     </div>
 
                     <div className='col-sm-12 col-md-6'>
                         <h3 className="custHead">Registration List</h3>
 
-                        <div className="row" style={{ padding: '2%' }}>
-                            {data.map((item) => (
+                         <div className="row" style={{ padding: '2%' }}>
+                            {apiData.map((item) => (
                                 <div key={item.id} className="custCardRow">
                                     <div className="card border-success mb-3 custCard">
                                         <div className="card-header bg-transparent border-success">{item.id}-{item.userName}</div>
-                                        {/* <img className="card-img-top" src={item.ProductImg} alt="Card"></img> */}
                                         <div className="card-body text-success">
                                             <h5 className="card-title">{item.email}</h5>
                                             <p className="card-text">{item.contactNumber}<br></br>
                                                 {item.gender}</p>
                                         </div>
-                                        <div className="card-footer bg-transparent border-success">
+                                        {/* <div className="card-footer bg-transparent border-success">
                                             <button type="button" className="btn btn-outline-primary custBut" onClick={() => updateRegister(item)}>Edit</button>
                                             <button className="btn btn-outline-success custBut" onClick={() => expandRegister(item)}>
                                                 <Link className="custLink" to={item.id}>Expand</Link>
                                             </button>
-                                            {/* <button type="button" to='/Registration' className="btn btn-outline-success custBut" onClick={() => expandRegister(item)}>Expand</button> */}
                                             <button type="button" className="btn btn-outline-danger custBut" onClick={() => deleteRegister(item)}>Delete</button>
-                                        </div>
+                                        </div> */}
                                     </div>
 
                                 </div>
                             ))
                             }
-                        </div>
+                        </div> 
                         <Outlet />
                     </div>
                 </div>

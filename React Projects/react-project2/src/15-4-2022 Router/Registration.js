@@ -57,6 +57,7 @@ export default function Registration() {
             // if (value.buttonText === "Submit") {
             axios.post(' https://625cf8a74c36c753576ca3ef.mockapi.io/userRegistration', register)
                 .then(() => {
+                    alert("File Submitted successfully...");
                     axios.get('https://625cf8a74c36c753576ca3ef.mockapi.io/userRegistration')
                         .then(nodeData => setData(nodeData.data))
                     document.getElementById("registerForm").reset()
@@ -89,16 +90,17 @@ export default function Registration() {
     }
 
     const deleteRegister = (event) => {
-        // var deleteConfirm = confirm(`${'Are you sure to delete the' + event.userName + 'record ?'}`)
-        // if (deleteConfirm) {
-        axios.delete('https://625cf8a74c36c753576ca3ef.mockapi.io/userRegistration/' + event.id)
-            .then(() => {
-                axios.get('https://625cf8a74c36c753576ca3ef.mockapi.io/userRegistration')
-                    .then(nodeData => setData(nodeData.data))
-                document.getElementById("registerForm").reset()
-                clearData();
-            })
-        // }
+        var deleteConfirm = window.confirm(`${'Are you sure to delete ' + event.userName.toUpperCase() + ' record ?'}`)
+        if (deleteConfirm) {
+            axios.delete('https://625cf8a74c36c753576ca3ef.mockapi.io/userRegistration/' + event.id)
+                .then(() => {
+                    axios.get('https://625cf8a74c36c753576ca3ef.mockapi.io/userRegistration')
+                        .then(nodeData => setData(nodeData.data))
+                        alert("File Deleted successfully...");
+                    document.getElementById("registerForm").reset()
+                    clearData();
+                })
+        }
     }
 
     const clearData = () => {
@@ -107,7 +109,6 @@ export default function Registration() {
     }
 
     const updateConfirm = (event) => {
-        console.log("aaaaaaaaaaaaaa", updateId)
         event.preventDefault()
         var course = '';
         for (let val in register) {
@@ -129,7 +130,7 @@ export default function Registration() {
 
             axios.put('https://625cf8a74c36c753576ca3ef.mockapi.io/userRegistration/' + updateId, register)
                 .then((res) => {
-                    // console.log(res)
+                    alert("File Updated successfully...");
                     axios.get('https://625cf8a74c36c753576ca3ef.mockapi.io/userRegistration')
                         .then(nodeData => setData(nodeData.data))
                     document.getElementById("registerForm").reset()
@@ -142,7 +143,7 @@ export default function Registration() {
         <>
             <div className='container custCont' >
                 <div className='row'>
-                    <div className='col-sm-12 col-md-6 custDiv'>
+                    <div className='col-sm-12 col-md-5 custDiv'>
                         <h3 className="custHead">Registration Form</h3>
                         <form id="registerForm">
                             <div className="row">
@@ -250,7 +251,7 @@ export default function Registration() {
                         </form>
                     </div>
 
-                    <div className='col-sm-12 col-md-6'>
+                    <div className='col-sm-12 col-md-7'>
                         <h3 className="custHead">Registration List</h3>
 
                         <table className="table table-striped custTable">

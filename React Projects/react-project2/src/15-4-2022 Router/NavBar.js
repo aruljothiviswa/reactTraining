@@ -15,10 +15,10 @@ export default function NavBar() {
                         role="button" data-bs-toggle="dropdown" aria-expanded="false"><span className="navbar-toggler-icon"></span></a>
                     <ul className='dropdown-menu' style={{ right: '0', left: 'auto' }} aria-labelledby='navbarDropdown'>
                         <li ><NavLink to='/' className="custList">Home</NavLink></li>
-                        <li ><NavLink to='/EmployeeDetails' className="custList" > Employee Details</NavLink></li>
+                        <li ><NavLink to='/products' className="custList" > Products</NavLink></li>
                         <li ><NavLink to='/Registration' className="custList"> Registration</NavLink></li>
                         <li ><NavLink to='/Register' className="custList"> Register card</NavLink></li>
-                        <li ><NavLink to='/Products' className="custList">Products</NavLink></li>
+                        {/* <li ><NavLink to='/Products' className="custList">Products</NavLink></li> */}
                         <li ><NavLink to='/AboutUs' className="custList"> About Us</NavLink></li>
                         <li ><NavLink to='/ContactUs' className="custList"> Contact Us</NavLink></li>
                     </ul>
@@ -27,10 +27,10 @@ export default function NavBar() {
                 <div className="collapse navbar-collapse hidden-sm hidden-xs" id="navbarNav">
                     <div className="navbar-nav ms-auto">
                         <NavLink to='/' >Home</NavLink>&nbsp;&nbsp;
-                        <NavLink to='/EmployeeDetails' > Employee Details</NavLink>&nbsp;&nbsp;
+                        <NavLink to='/products' > Products</NavLink>&nbsp;&nbsp;
                         <NavLink to='/Registration'> Registration</NavLink>&nbsp;&nbsp;
                         <NavLink to='/Register'> Register Card</NavLink>&nbsp;&nbsp;
-                        <NavLink to='/Products'>Products</NavLink>&nbsp;&nbsp;
+                        {/* <NavLink to='/Products'>Products</NavLink>&nbsp;&nbsp; */}
                         <NavLink to='/AboutUs'> About Us</NavLink>&nbsp;&nbsp;
                         <NavLink to='/ContactUs'> Contact Us</NavLink>&nbsp;&nbsp;
                     </div>

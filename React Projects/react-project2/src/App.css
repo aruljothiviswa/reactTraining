@@ -126,3 +126,12 @@ width:22%;
   margin-left:45%;
 }
 
+.custLink{
+  text-decoration: none;
+}
+
+.custErr{
+  color:red;
+  font-size: 10px;
+}
+

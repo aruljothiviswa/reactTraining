@@ -8,9 +8,9 @@ export default function UserDetails() {
     const navigate = useNavigate();
     let [register, setRegister] = useState({
         userName: '', email: '', contactNumber: '', gender: '', graduation: '', address: '',
-        course1: '', course2: "", course3: ""
+        course1: '', course2: "", course3: "", selectedFile: null
     })
-    let { name, contact, email, course, gender, graduation, address } = register;
+    let { name, contact, email, course, gender, graduation, address, selectedFile } = register;
     const [data, setData] = useState([])
     useEffect(() => {
         axios.get('https://625cf8a74c36c753576ca3ef.mockapi.io/users')
@@ -30,13 +30,17 @@ export default function UserDetails() {
             graduation = ele.graduation;
             address = ele.address;
             email = ele.email;
+            // selectedFile = ele.selectedFile
         }
     })
 
     return (
         <>
             <div className='row'>
-                <div className='col'>
+                {/* <div className='col-4'>{selectedFile}
+                    <img src={selectedFile.name}></img>
+                </div> */}
+                <div className='col-8'>
                     <h2 class="custTitle">{name} Details</h2>
                     <table className='custTab'>
                         <tr>

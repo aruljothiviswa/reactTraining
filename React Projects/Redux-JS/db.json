@@ -1,0 +1,29 @@
+{
+    "users":[
+        {
+            "userName": "sssssss",
+            "email": "sss@ss.ss",
+            "contactNumber": 555555555,
+            "gender": "female",
+            "graduation": "PG",
+            "address": "dddddddd",
+            "course": "Digital Electronics, Power Electronic",
+            "id": "1",
+            "course1": "Digital Electronics",
+            "course3": "Power Electronics",
+            "course2": ""
+          }, {
+            "userName": "aaaaa",
+            "email": "aaa@aa.aa",
+            "contactNumber": 555555555,
+            "gender": "female",
+            "graduation": "PG",
+            "address": "aaaaa",
+            "course": "Digital Electronics",
+            "id": "1",
+            "course1": "Digital Electronics",
+            "course3": "",
+            "course2": ""
+          }
+    ]
+}

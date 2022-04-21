@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import { Link } from 'react-router-dom';
 import '../App.css';
 import { productData } from './productDetails.js'
 
@@ -57,6 +58,7 @@ class Content extends Component {
                                         <p className="card-text">{item.description}</p>
                                     </div>
                                     <div className="card-footer bg-transparent border-success">Price : Rs.{item.price}</div>
+                                    <button className='btn btn-success'><Link to={'/products/' + item.productId}><span style={{ color: "white", textDecoration: "none" }}>Read more...</span></Link></button>
                                 </div>
                             </div>
                         ))

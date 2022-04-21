@@ -9,7 +9,7 @@ const FURequest = "FETCH_USER_REQUSET";
 const FUSuccess = "FETCH_USER_SUCCESS";
 const FUFailure = "FETCH_USER_FAILURE";
 
-const initianlState = {
+const initialState = {
     loading: false,
     users: [],
     error: ''
@@ -35,7 +35,7 @@ const fetchUserFailure = (err) => {
     }
 }
 
-const reducer = (state = initianlState, action) => {
+const reducer = (state = initialState, action) => {
     switch (action.type) {
         case FURequest:
             return { ...state, loading: true }
@@ -47,7 +47,8 @@ const reducer = (state = initianlState, action) => {
 }
 
 const fetchUsers = () => {
-    return (dispatch) => {
+    return (dispatch) => {        
+        // axios.get('http://localhost:3000/users')
         axios.get('https://625cf8a74c36c753576ca3ef.mockapi.io/userRegistration')
             .then(res => {
                 const tempUser = res.data;

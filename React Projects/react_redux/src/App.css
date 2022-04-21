@@ -1,0 +1,157 @@
+.App {
+  text-align: center;
+}
+
+.title{
+  color:green
+}
+.product{
+  background-color: rgb(205, 231, 205);
+  width:300px;
+  height:200px;
+  margin:10px;
+  display:inline-block;
+  color:purple;
+}
+
+.buttonClass{
+  background: lightblue;
+  width:100px;
+  height:30px;
+  cursor:pointer;
+}
+
+
+.custCon{
+  margin-top: 20px !important;
+  }
+  
+  .custImg{
+      padding:5%;
+      height:100%;
+      width: 100%;
+    }
+  
+    .custColor{
+      /* position: absolute; */
+      left: 0;
+      bottom: 0; 
+      height: auto;
+      width: 100%;
+      color:white
+    }
+  
+    nav a{
+        color:white;
+        text-decoration: none;
+    }
+  
+    nav a:hover{
+      color:yellow;
+    }
+  
+    nav a.active{
+        color:orange;
+    }
+  
+    footer {
+      z-index: 1;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+  }
+  
+  .custList{
+    color:black ;
+  }
+  
+  .custEdit{
+    cursor:pointer;
+    color:blue;
+  }
+  
+  .custDelete{
+    cursor:pointer;
+    color:red;
+  }
+  
+  .custDiv{
+    border:2px solid rgb(125, 125, 133);
+    /* background:#444c57; */
+  }
+  
+  .custTable{
+    --bs-table-striped-bg: #d8e4f5 !important;
+  }
+  
+  .custHead{
+    margin-top:5%;
+    margin-bottom:5%;
+    margin-left:10%;
+    color:rgb(69, 64, 64);
+  }
+  
+  .custButton{
+    margin-left:40%;
+    margin-bottom:3%;
+    margin-top:1%;
+    width:80%;
+  }
+  
+  .custCont{
+    margin-bottom:80px;
+  }
+  
+  .custCon{
+    margin-bottom:-155px;
+  }
+  
+  .custCard{
+      width: 98%;
+      height: 100%;
+      /* object-fit: cover; */
+      
+    /* max-width: '300px';
+    height: '100%'; */
+  }
+  
+  .custCardRow{
+    margin-bottom: 15px;
+  }
+  
+  .custContain{
+    margin-bottom: 100px;
+    position: static;
+  }
+  
+  .custBut{
+  cursor: pointer !important;
+  margin-left:5%;
+  margin-right:5%;
+  width:22%;
+  }
+  
+  .custTab{
+    border: none;
+    margin-left:35%;
+  
+  }
+  
+  .custTab tr td{
+    padding:10px;
+  }
+  
+  .custTitle{
+    color:blue;
+    margin-left:40%;
+  }
+  
+  .custbtn{
+    margin-left:45%;
+  }
+  
+  .custLink{
+    text-decoration: none;
+  }
+  
+  
