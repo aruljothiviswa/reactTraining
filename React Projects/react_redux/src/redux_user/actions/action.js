@@ -36,20 +36,32 @@ export const fetchUsers = () => {
 export const addUsers = (data) => {
     return (dispatch) => {
         axios.post('https://625cf8a74c36c753576ca3ef.mockapi.io/userRegistration', data)
-            .then(() =>  fetchUsers() )
+            .then(() => axios.get('https://625cf8a74c36c753576ca3ef.mockapi.io/userRegistration')
+                .then(res => {
+                    const tempUser = res.data;
+                    dispatch(fetchUserSuccess(tempUser))
+                }))
     }
 }
 
 export const updateUsers = (data, id) => {
     return (dispatch) => {
         axios.put('https://625cf8a74c36c753576ca3ef.mockapi.io/userRegistration/' + id, data)
-            .then(() =>  fetchUsers() )
+            .then(() => axios.get('https://625cf8a74c36c753576ca3ef.mockapi.io/userRegistration')
+                .then(res => {
+                    const tempUser = res.data;
+                    dispatch(fetchUserSuccess(tempUser))
+                }))
     }
 }
 
-export const deleteUsers = ( id) => {
+export const deleteUsers = (id) => {
     return (dispatch) => {
         axios.delete('https://625cf8a74c36c753576ca3ef.mockapi.io/userRegistration/' + id)
-            .then(() =>  fetchUsers() )
+            .then(() => axios.get('https://625cf8a74c36c753576ca3ef.mockapi.io/userRegistration')
+                .then(res => {
+                    const tempUser = res.data;
+                    dispatch(fetchUserSuccess(tempUser))
+                }))
     }
 }

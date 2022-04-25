@@ -1,5 +1,5 @@
 import ParentComponent from "./15-4-2022/ParentComponent";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import axios from 'axios';
 import WebPage from "./15-4-2022 Router/WebPage";
 import { Route, Routes } from "react-router-dom";
@@ -14,8 +14,9 @@ import NotFound from "./15-4-2022 Router/NotFound";
 import UserDetails from "./15-4-2022 Router/UserDetails";
 import Register
   from "./15-4-2022 Router/Register";
-import ProductDisplay from "./15-4-2022 Router/ProdustDisplay";
 export const dataContext = React.createContext();
+
+const ProductDisplayLazy = React.lazy(() => import("./15-4-2022 Router/ProdustDisplay"));
 
 function App() {
   const [data, setData] = useState([])
@@ -32,26 +33,27 @@ function App() {
       <Routes>
         <Route path='/' element={<EmpContent />}></Route>
         <Route path='/products' element={<Content />}></Route>
-        <Route path='/products/:id' element={<ProductDisplay/>}></Route>
+
+        <Route path='/products/:id' element={
+          <Suspense fallback="Loading.....">
+            <ProductDisplayLazy />
+          </Suspense>
+        }></Route>
 
         <Route path='/AboutUs' element={<AboutUs />}></Route>
         <Route path='/ContactUs' element={<ContactUs />}></Route>
 
 
 
-        <Route path='Register' element={<Register />}>
-        </Route>
+        <Route path='Register' element={<Register />}></Route>
         <Route path='Register/:id' element={<UserDetails />} />
 
+        <Route path='Registration' element={<Registration />}></Route>
 
-
-
-        <Route path='Registration' element={<Registration />}>
-          {/* <Route path=':id' element={<UserDetails />} /> */}
-        </Route>
-        {/* <Route path='/Products' element={<dataContext.Provider value={data}>
+        <Route path='/ProductDetails' element={<dataContext.Provider value={data}>
           <ParentComponent />
-        </dataContext.Provider>}></Route> */}
+        </dataContext.Provider>}></Route>
+
         <Route path='*' element={<NotFound />} />
       </Routes>
     </div>
